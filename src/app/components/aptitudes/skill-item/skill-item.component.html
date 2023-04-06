@@ -1,0 +1,25 @@
+<li class="listitem pRelative mt-2">
+    <h5>{{skillname}}</h5>
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" [attr.aria-label]="skillname" [style]="'width: '+value+'%'" [attr.aria-valuenow]="value" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <app-manage-buttons *ngIf="is_login"
+        [button_add]="false"
+        [button_delete]="true"
+        [button_edit]="true"
+        [id]="id"
+        [onClickDelete]="delete"
+        [modal_id_edit]="'skillModal_'+id">
+    </app-manage-buttons>
+    <app-form-skill *ngIf="is_login"
+        [reloadHTML]="reloadHTML"
+        [type]="type"
+        [category]="category"
+        [categoryDisabled]="false"
+        [modalId]="'skillModal_'+id"
+        [modalTitle]="'Editar Entrada'"
+        [entryId]="id"
+        [skillname]="skillname"
+        [value]="value">
+    </app-form-skill>
+</li>

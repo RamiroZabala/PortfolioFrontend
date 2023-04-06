@@ -1,0 +1,64 @@
+<div class="modal fade" id={{modalId}} tabindex="-1" aria-labelledby="skillModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="skillModalLabel">Agregar {{this.type}} Skill / {{this.category}}</h1>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="Form" (ngSubmit)="onSend($event)"> 
+                <!-- Category -->
+                <div class="form-outline mb-4">
+                    <label class="form-label" [for]="'form-skill-category-'+modalId">Categoría</label>
+                    <select [id]="'form-skill-category-'+modalId" formControlName="form_category" class="form-control"> 
+                        <option *ngFor="let o of selectOptions" [value]="o.value">{{ o.label }}</option>
+                    </select>
+                    <div *ngIf="Category?.errors && Category?.touched">
+                        <p *ngIf="Category?.hasError('required')" class="text-danger">
+                            La Categoría es requerida
+                        </p>
+                    </div>
+                </div>
+                <!-- Title -->
+                <div class="form-outline mb-4">
+                    <label class="form-label" [for]="'form-skill-title-'+modalId">Skill</label>
+                    <input required
+                        formControlName="form_skillname" type="text" [id]="'form-skill-title-'+modalId" class="form-control"
+                        [ngClass]="{'is-invalid': SkillName?.errors && SkillName?.touched, 'is-valid':SkillName?.errors && SkillName?.touched}"
+                    >
+                    <div *ngIf="SkillName?.errors && SkillName?.touched">
+                        <p *ngIf="SkillName?.hasError('required')" class="text-danger">
+                            El Titulo es requerido
+                        </p>
+                    </div>
+                </div>
+                <!-- Value -->
+                <div class="form-outline mb-4">
+                    <label class="form-label" [for]="'form-skill-value-'+modalId">Valor (?/100)</label>
+                    <input required max="100" min="0"
+                        formControlName="form_value" type="number" [id]="'form-skill-value-'+modalId" class="form-control"
+                        [ngClass]="{'is-invalid': Value?.errors && Value?.touched, 'is-valid':Value?.errors && Value?.touched}"
+                        maxlength="3"
+                    >
+                    <div *ngIf="Value?.errors && Value?.touched">
+                        <p *ngIf="Value?.hasError('required')" class="text-danger">
+                            El valor es requerido
+                        </p>
+                        <p *ngIf="Value?.hasError('maxlength')" class="text-danger">
+                            El valor no puede contener mas de 3 caracteres numericos
+                        </p>
+                    </div>
+                </div>
+                <!-- Submit -->
+                <div class="row">
+                    <div class="col-sm-4">
+                        <button type="button" class="button button-full button-cancel" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
+                    </div>
+                    <div class="col-sm-8">
+                        <button [disabled]="!FormValid" type="submit" class="button button-full" data-bs-dismiss="modal">{{modalSubmitText}}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+</div>

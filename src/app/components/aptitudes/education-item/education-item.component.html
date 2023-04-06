@@ -1,0 +1,32 @@
+<li class="card bg-transparent">
+    <app-manage-buttons *ngIf="is_login" class="pRelative"
+        [button_delete]="true"
+        [button_edit]="true"
+        [id]="id"
+        [onClickDelete]="delete"
+        [modal_id_edit]="'educationModal_'+id">
+    </app-manage-buttons>
+    <div class="row g-0">
+        <div class="col-2 col-xl-1">
+            <div class="bg-img" [style]="'background-image:url(\''+img_icon+'\')'"></div>
+        </div>
+        <div class="col-10 col-xl-11 ">
+            <div class="card-body">
+                <h4 class="card-title" >{{title}}</h4>
+                <p class="card-text">{{description}}</p>
+                <p class="card-text"><small class="text-muted">{{period}}</small></p>
+            </div>
+        </div>
+
+    </div>
+    <app-form-education *ngIf="is_login"
+        [modalId]="'educationModal_'+id"
+        [modalTitle]="'Editar Entrada'"
+        [reloadHTML]="reloadHTML"
+        [entryId]="id"
+        [defaultTitle]="title"
+        [defaultDescription]="description"
+        [defaultPeriod]="period"
+        [defaultImgUrl]="img_icon">
+    </app-form-education>
+</li>

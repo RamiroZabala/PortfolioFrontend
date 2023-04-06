@@ -1,0 +1,19 @@
+@import "src/colors";
+
+.manage-buttons{
+    position:absolute;
+    right:0;top:0;
+    button{
+        border: none !important;
+        color:$color-special2;
+        font-size:16px;
+        transition: transform 0.2s;
+        :hover{
+            color:$color-primary;
+        }
+        :active{
+            transform: scale(0.92);
+        }
+    }
+
+}

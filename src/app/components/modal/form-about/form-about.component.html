@@ -1,0 +1,144 @@
+<div class="modal fade" id={{modalId}} tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="aboutModalLabel">{{modalTitle}}</h1>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="Form" (ngSubmit)="onSend($event)"> 
+                <div class="row">
+                    <!-- Name -->
+                    <div class="form-outline mb-4 col-6">
+                        <label class="form-label" for="form-about-name">Nombre</label>
+                        <input required
+                            formControlName="form_name" type="text" id="form-about-name" class="form-control"
+                            [ngClass]="{'is-invalid': Name?.errors && Name?.touched, 'is-valid':Name?.errors && Name?.touched}"
+                        >
+                        <div *ngIf="Name?.errors && Name?.touched">
+                            <p *ngIf="Name?.hasError('required')" class="text-danger">
+                                El Nombre es requerido
+                            </p>
+
+                        </div>
+                    </div>
+                    <!-- Lastname -->
+                    <div class="form-outline mb-4 col-6">
+                        <label class="form-label" for="form-about-lastname">Apellido</label>
+                        <input required
+                            formControlName="form_lastname" type="text" id="form-about-lastname" class="form-control"
+                            [ngClass]="{'is-invalid': LastName?.errors && LastName?.touched, 'is-valid':LastName?.errors && LastName?.touched}"
+                        >
+                        <div *ngIf="LastName?.errors && LastName?.touched">
+                            <p *ngIf="LastName?.hasError('required')" class="text-danger">
+                                El Apellido es requerido
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- LongDescription -->
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="form-about-ldesc">Descripción</label>
+                    <textarea required rows="7"
+                        formControlName="form_description" type="text" id="form-about-ldesc" class="form-control"
+                        [ngClass]="{'is-invalid': LongDescription?.errors && LongDescription?.touched, 'is-valid':LongDescription?.errors && LongDescription?.touched}"
+                    ></textarea>
+                    <div *ngIf="LongDescription?.errors && LongDescription?.touched">
+                        <p *ngIf="LongDescription?.hasError('required')" class="text-danger">
+                            La Descripción es requerida
+                        </p>
+                    </div>
+                </div>
+                <!-- Titulos -->
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="form-about-titles">Títulos</label>
+                    <input required
+                        formControlName="form_title" type="text" id="form-about-titles" class="form-control"
+                        [ngClass]="{'is-invalid': Title?.errors && Title?.touched, 'is-valid':Title?.errors && Title?.touched}"
+                    >
+                    <div *ngIf="Title?.errors && Title?.touched">
+                        <p *ngIf="Title?.hasError('required')" class="text-danger">
+                            El Título es requerido
+                        </p>
+                    </div>
+                </div>
+                <!-- Nationality -->
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="form-about-nationality">Nacionalidad</label>
+                    <input required
+                        formControlName="form_nationality" type="text" id="form-about-nationality" class="form-control"
+                        [ngClass]="{'is-invalid': Nationality?.errors && Nationality?.touched, 'is-valid':Nationality?.errors && Nationality?.touched}"
+                        minlength="4"
+                    >
+                    <div *ngIf="Nationality?.errors && Nationality?.touched">
+                        <p *ngIf="Nationality?.hasError('required')" class="text-danger">
+                            La nacionalidad es requerida
+                        </p>
+                    </div>
+                </div>
+                <!-- BirthDate -->
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="form-about-birthdate">Fecha de nacimiento</label>
+                    <input required
+                        formControlName="form_birthdate" type="date" id="form-about-birthdate" class="form-control"
+                        [ngClass]="{'is-invalid': BirthDate?.errors && BirthDate?.touched, 'is-valid':BirthDate?.errors && BirthDate?.touched}"
+                        minlength="4"
+                    >
+                    <div *ngIf="BirthDate?.errors && BirthDate?.touched">
+                        <p *ngIf="BirthDate?.hasError('required')" class="text-danger">
+                            La fecha de nacimiento es requerida
+                        </p>
+                    </div>
+                </div>
+                <!-- Image URL -->
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="form-about-img">URL de la imagen de perfil</label>
+                    <input required
+                        formControlName="form_profilepic" type="url" id="form-about-img" class="form-control"
+                        [ngClass]="{'is-invalid': ProfilePic?.errors && ProfilePic?.touched, 'is-valid':ProfilePic?.errors && ProfilePic?.touched}"
+                    >
+                    <div *ngIf="ProfilePic?.errors && ProfilePic?.touched">
+                        <p *ngIf="ProfilePic?.hasError('required')" class="text-danger">
+                            La URL de la Imagen es requerida
+                        </p>
+                    </div>
+                </div>
+                <!-- Email -->
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="form-about-email">Email</label>
+                    <input required
+                        formControlName="form_email" type="text" id="form-about-email" class="form-control"
+                        [ngClass]="{'is-invalid': Email?.errors && Email?.touched, 'is-valid':Email?.errors && Email?.touched}"
+                    >
+                    <div *ngIf="Email?.errors && Email?.touched">
+                        <p *ngIf="Email?.hasError('required')" class="text-danger">
+                            El Email es requerido
+                        </p>
+                    </div>
+                </div>
+                <!-- Phone -->
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="form-about-phone">Phone</label>
+                    <input required
+                        formControlName="form_phone" type="text" id="form-about-phone" class="form-control"
+                        [ngClass]="{'is-invalid': Phone?.errors && Phone?.touched, 'is-valid':Phone?.errors && Phone?.touched}"
+                    >
+                    <div *ngIf="Phone?.errors && Phone?.touched">
+                        <p *ngIf="Phone?.hasError('required')" class="text-danger">
+                            El Teléfono es requerido
+                        </p>
+                    </div>
+                </div>
+                <!-- Submit -->
+                <div class="row">
+                    <div class="col-sm-4">
+                        <button type="button" class="button button-full button-cancel" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
+                    </div>
+                    <div class="col-sm-8">
+                        <button [disabled]="!FormValid" type="submit" class="button button-full" data-bs-dismiss="modal">{{modalSubmitText}}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+</div>

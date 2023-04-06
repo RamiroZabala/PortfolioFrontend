@@ -1,0 +1,18 @@
+@import "src/colors";
+$imageWidth:20em;
+$imageHeight:calc($imageWidth*9/16);/*16:9*/
+.card-title{
+    font-size:2em;
+}
+.bg-img{
+    height: $imageWidth;
+    width: $imageWidth;
+    max-width:100%;
+    margin:1.5em 0;
+    margin-right:auto;
+    border:1px solid $color-special1;    
+    background-size: auto 100%;
+    border-radius: 0.4em;
+    background-position:left center;;
+    display:block;
+}

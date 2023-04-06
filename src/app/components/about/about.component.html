@@ -1,0 +1,47 @@
+<section id="About" class="row">
+    <h3>SOBRE MI</h3>
+    <div class="col-12 mt-4">
+        <div class="card bg-transparent mb-4">
+            <app-manage-buttons *ngIf="is_login" class="pRelative"
+                [button_edit]="true"
+                [id]="0"
+                [modal_id_edit]="'aboutModal'">
+            </app-manage-buttons>
+            <div class="row g-0">
+                <div class="img-profile col-xs-12 col-sm-4 col-md-4 col-xl-2  pRelative ">
+                    <div class="ratio ratio-1x1 rounded-circle" style="background-image: url('{{data.img_profile}}');"></div>
+                        <!--img class="card-img p-2" [src]="data.img_profile" alt=""-->
+                    <!--app-manage-buttons [button_edit]="true"></app-manage-buttons-->
+                </div>
+                <div class="col-xs-12 col-sm-8 col-md-8 col-xl-10 ">
+                    <div class="card-body">
+                        <h4 class="card-title" >Soy {{data.name}}</h4>
+                        <p class="card-text">Tengo {{age}} años y soy {{data.nationality}}</p>
+                        <p class="card-text">{{data.long_description}}</p>
+                        <p class="card-text">¿Tienes un proyecto interesante? <a [routerLink]="['/contact']">Hablemos!</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div *ngIf="is_login" #childContainer><ng-template appDynamicComponent></ng-template></div>
+<!--app-form-about //[!] Lo creo dinamicamente desde about.component.ts para evitar error tiempos de ejecucion en la definicion de   data: Person = {...}
+    [modalId]="'aboutModal'"
+    [modalTitle]="'Editar Entrada'"
+    [reloadHTML] = "reloadHTML"
+    [defaultName]="data.name"
+    [defaultLastName]="data.lastname"
+    [defaultTitle]="data.title"
+    [defaultLongDescription]="data.long_description"
+    [defaultShortDescription]="data.short_description"
+    [defaultNationality]="data.nationality"
+    [defaultBirthDate]="data.birthdate"
+    [defaultPfp]="data.img_profile"
+    [defaultBanner]="data.img_banner"
+    [defaultEmail]="data.email"
+    [defaultPhone]="data.phone"
+    [defaultFacebook]="data.facebook_id"
+    [defaultInstagram]="data.instagram_id"
+    [defaultTwitter]="data.twitter_id">
+</app-form-about-->

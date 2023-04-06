@@ -1,0 +1,22 @@
+$color-primary:#DDD;
+$color-primary-light:lighten($color-primary, 100%);
+$color-primary-dark:darken($color-primary, 50%);
+$color-secondary:#999;
+
+$color-special1:#5918DF;
+$color-special1-light:lighten($color-special1, 5%);
+$color-special1-dark:darken($color-special1, 20%);
+
+$color-special2:#15B991;
+$color-special2-light:lighten($color-special2, 3%);
+$color-special2-dark:darken($color-special2, 10%);
+
+$color-cancel:#b93b15;
+$color-cancel-light:lighten($color-cancel, 8%);
+$color-cancel-dark:darken($color-cancel, 10%);
+
+$color-disabled:#3f3f3f;
+$color-disabled-light:lighten($color-disabled, 8%);
+$color-disabled-dark:darken($color-disabled, 10%);
+
+$color-bg:#100E17;

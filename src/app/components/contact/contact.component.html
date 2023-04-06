@@ -1,0 +1,51 @@
+<section class="row" id="contact">
+    <h3 class="h1-responsive text-center">Contácteme</h3>
+    <div class="card">
+        <p class="text-center w-responsive mx-auto mb-3">¿Tiene usted alguna pregunta? Por favor, no dude en contactarme directamente.</p>
+        <form id="contact-form" name="contact-form">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="md-form mb-0">
+                        <input type="text" id="name" name="name" class="form-control">
+                        <label for="name" class="">Su nombre</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="md-form mb-0">
+                        <input type="text" id="email" name="email" class="form-control">
+                        <label for="email" class="">Su Email</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <div class="md-form mb-0">
+                        <input type="text" id="subject" name="subject" class="form-control">
+                        <label for="subject" class="">Asunto</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <div class="md-form">
+                        <textarea type="text" id="message" name="message" rows="4" class="form-control md-textarea"></textarea>
+                        <label for="message">Su mensaje</label>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="text-center text-md-left">
+            <button class="button button-full" onclick="document.getElementById('contact-form').submit();">Enviar</button>
+        </div>
+        <div class="status"></div>
+    </div>
+    <!--div class="row d-flex justify-content-center mb-4">
+        <div class="col-2 col-sm-2 col-lg-1 col-xl-1 social"><a class="fa-brands fa-facebook-f" [href]="'https://www.facebook.com/profile.php?id='+data.facebook_id" target="_blank"></a></div>
+        <div class="col-2 col-sm-2 col-lg-1 col-xl-1 social"><a class="fa-brands fa-twitter" [href]="'https://twitter.com/'+data.twitter_id"  target="_blank"></a></div>
+        <div class="col-2 col-sm-2 col-lg-1 col-xl-1 social"><a class="fa-brands fa-instagram" [href]="'https://instagram.com/'+data.instagram_id" target="_blank"></a></div>
+    </div>
+    <div class="row d-flex justify-content-center">
+        <div class="d-flex justify-content-center col-12 col-sm-12 col-lg-6 col-xl-12 social mb-3"><div class="fa-solid fa-phone"></div><div>{{data.phone}}</div></div>
+        <div class="d-flex justify-content-center col-12 col-sm-12 col-lg-6 col-xl-12 social"><div class="fa-solid fa-envelope"></div><div>{{data.email}}</div></div>
+    </div-->
+</section>

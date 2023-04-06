@@ -1,0 +1,34 @@
+<li class="row pRelative">
+    <div *ngIf="!is_even" class="col-sm-0 col-1"></div>
+    <div class="col-lg-6 col-sm-12">
+        <div class="card bg-transparent mb-4">
+            <app-manage-buttons *ngIf="is_login" class="pRelative"
+                [button_delete]="true"
+                [button_edit]="true"
+                [id]="id"
+                [onClickDelete]="delete"
+                [modal_id_edit]="'workprojectModal_'+id">
+            </app-manage-buttons>
+            <div class="card-body">
+                <h4 class="card-title" >{{title}}</h4>
+                <p class="card-text">{{description}}</p>
+                <p class="card-text"><small class="text-muted">{{period}}</small></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-5 col-sm-12">
+        <a [href]="url" target="_blank" class="bg-img" [style]="'background-image:url(\''+img+'\')'"></a>
+    </div>
+    <div *ngIf="is_even" class="col-sm-0 col-1"></div>
+    <app-form-workproject *ngIf="is_login"
+        [modalId]="'workprojectModal_'+id"
+        [modalTitle]="'Editar Entrada'"
+        [reloadHTML]="reloadHTML"
+        [entryId]="id"
+        [defaultTitle]="title"
+        [defaultDescription]="description"
+        [defaultPeriod]="period"
+        [defaultImgUrl]="img"
+        [defaultUrl]="url">
+    </app-form-workproject>
+</li>

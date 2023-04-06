@@ -1,0 +1,50 @@
+<div class="modal fade" id="signinModal" tabindex="-1" aria-labelledby="signinModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="signinModalLabel">Login</h1>
+          <!--button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button-->
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="Form" (ngSubmit)="login($event)"> 
+                <!-- Email -->
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="signin-form-email">Email address</label>
+                    <input
+                        formControlName="email" type="email" id="signin-form-email" class="form-control"
+                        [ngClass]="{'is-invalid': Email?.errors && Email?.touched, 'is-valid':Email?.errors && Email?.touched}"
+                    >
+                    <div *ngIf="Email?.errors && Email?.touched">
+                        <p *ngIf="Email?.hasError('required')" class="text-danger">
+                            El email es requerido
+                        </p>
+                        <p *ngIf="Email?.hasError('email')" class="text-danger">
+                            El formato del email es incorrecto
+                        </p>
+                    </div>
+                </div>
+                <!-- Password -->
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="signin-form-password">Password</label>
+                    <input 
+                        formControlName="password" type="password" id="signin-form-password" class="form-control"
+                        [ngClass]="{'is-invalid': Password?.errors && Password?.touched, 'is-valid':Password?.errors && Password?.touched}"
+                        minlength="8"
+                    >
+                    <div *ngIf="Password?.errors && Password?.touched">
+                        <p *ngIf="Password?.hasError('required')" class="text-danger">
+                            La contrasesña es requerida
+                        </p>
+                        <!--error video 21:17 https://argentinaprograma.inti.gob.ar/mod/page/view.php?id=2689&forceview=1-->
+                        <p *ngIf="Password?.errors?.['minlength']" class="text-danger">
+                            La contraseña debe tener al menos 8 carácteres
+                        </p>
+                    </div>
+                </div>
+                <!-- Submit -->
+                <button [disabled]="!FormValid" type="submit" class="button button-full btnsing" data-bs-dismiss="modal">Login</button>
+            </form>
+        </div>
+      </div>
+    </div>
+</div>

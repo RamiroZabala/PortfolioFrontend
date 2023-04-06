@@ -1,0 +1,91 @@
+<div class="modal fade" id={{modalId}} tabindex="-1" aria-labelledby="educationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="educationModalLabel">{{modalTitle}}</h1>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="Form" (ngSubmit)="onSend($event)"> 
+                <!-- Title -->
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="form-workproject-title">Titulo</label>
+                    <input required
+                        formControlName="form_title" type="text" id="form-workproject-title" class="form-control"
+                        [ngClass]="{'is-invalid': Title?.errors && Title?.touched, 'is-valid':Title?.errors && Title?.touched}"
+                    >
+                    <div *ngIf="Title?.errors && Title?.touched">
+                        <p *ngIf="Title?.hasError('required')" class="text-danger">
+                            El Titulo es requerido
+                        </p>
+                    </div>
+                </div>
+                <!-- Description -->
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="form-workproject-desc">Descripción</label>
+                    <textarea required
+                        formControlName="form_description" type="text" id="form-workproject-desc" class="form-control"
+                        [ngClass]="{'is-invalid': Description?.errors && Description?.touched, 'is-valid':Description?.errors && Description?.touched}"
+                    ></textarea>
+                    <div *ngIf="Description?.errors && Description?.touched">
+                        <p *ngIf="Description?.hasError('required')" class="text-danger">
+                            La Descripción es requerida
+                        </p>
+                    </div>
+                </div>
+                <!-- Period -->
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="form-workproject-period">Período / Fecha</label>
+                    <input required
+                        formControlName="form_period" type="text" id="form-workproject-period" class="form-control"
+                        [ngClass]="{'is-invalid': Period?.errors && Period?.touched, 'is-valid':Period?.errors && Period?.touched}"
+                        minlength="4"
+                    >
+                    <div *ngIf="Period?.errors && Period?.touched">
+                        <p *ngIf="Period?.hasError('required')" class="text-danger">
+                            El período es requerido
+                        </p>
+                        <p *ngIf="Period?.hasError('minlength')" class="text-danger">
+                            El período debe contener al menos 4 caracteres
+                        </p>
+                    </div>
+                </div>
+                <!-- Image URL -->
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="form-workproject-img">URL de la imagen</label>
+                    <input required
+                        formControlName="form_imgurl" type="url" id="form-workproject-img" class="form-control"
+                        [ngClass]="{'is-invalid': ImgUrl?.errors && ImgUrl?.touched, 'is-valid':ImgUrl?.errors && ImgUrl?.touched}"
+                    >
+                    <div *ngIf="ImgUrl?.errors && ImgUrl?.touched">
+                        <p *ngIf="ImgUrl?.hasError('required')" class="text-danger">
+                            La URL de la Imagen es requerida
+                        </p>
+                    </div>
+                </div>
+                <!-- URL -->
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="form-workproject-url">Enlace externo</label>
+                    <input required
+                        formControlName="form_url" type="url" id="form-workproject-url" class="form-control"
+                        [ngClass]="{'is-invalid': Url?.errors && Url?.touched, 'is-valid':Url?.errors && Url?.touched}"
+                    >
+                    <div *ngIf="Url?.errors && Url?.touched">
+                        <p *ngIf="Url?.hasError('required')" class="text-danger">
+                            La URL del enlace es requerida
+                        </p>
+                    </div>
+                </div>
+                <!-- Submit -->
+                <div class="row">
+                    <div class="col-sm-4">
+                        <button type="button" class="button button-full button-cancel" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
+                    </div>
+                    <div class="col-sm-8">
+                        <button [disabled]="!FormValid" type="submit" class="button button-full" data-bs-dismiss="modal">{{modalSubmitText}}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+<ul class="manage-buttons list-inline m-0">
+    <li *ngIf="button_add" class="list-inline-item">
+        <button class="btn btn-sm rounded-1"
+            type="button" title="Add"
+            data-placement="top"
+            data-toggle="tooltip"
+            data-bs-toggle="modal"
+            [attr.data-bs-target]="'#'+modal_id_add">
+            <i class="fa fa-plus"></i>
+        </button>
+    </li>
+    <li *ngIf="button_edit" class="list-inline-item">
+        <button class="btn btn-sm rounded-1 "
+            type="button" title="Edit"
+            data-placement="top"
+            data-toggle="tooltip"
+            data-bs-toggle="modal"
+            [attr.data-bs-target]="'#'+modal_id_edit">
+            <i class="fa fa-edit"></i>
+        </button>
+    </li>
+    <li *ngIf="button_delete" class="list-inline-item">
+        <button class="btn btn-sm rounded-1"
+            type="button" title="Delete"
+            data-placement="top"
+            data-toggle="tooltip"
+            (click)="onClickDelete()">
+            <i class="fa fa-trash"></i>
+        </button>
+    </li>
+</ul>

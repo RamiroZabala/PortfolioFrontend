@@ -1,0 +1,29 @@
+<header>
+    <nav class=" navbar navbar-expand-lg navbar-dark bg-transparent py-3">
+        <div class="container-fluid">
+            <a [routerLink]="['']" class="navbar-brand"><span>{{"\{"}}</span>RSZ<span>{{"\}"}}</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
+                    <!--li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Home</a></li-->
+                    <li class="nav-item"><a class="nav-link" href="#About">Sobre Mi</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#Education">Educación</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#HardSkills">Habilidades</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#WorkProject">Trabajos</a></li>
+                    <li class="nav-item"><a class="nav-link" [routerLink]="['/contact']">Contáctame</a></li>
+                </ul>
+            </div>
+            <button *ngIf="!is_login" type="button" class="button" data-bs-toggle="modal" data-bs-target="#signinModal">Login</button>
+            <button *ngIf="is_login" type="button" class="button" data-bs-toggle="modal" data-bs-target="#sigoutModal">Logout</button>
+            <!--div class="row justify-content-end">
+                <div class="col-2 col-sm-2 col-lg-1 col-xl-1 social face" ><a href="https://www.facebook.com/profile.php?id=100009462435183" target="_blank"></a></div>
+                <div class="col-2 col-sm-2 col-lg-1 col-xl-1 social twit" ><a href="https://twitter.com/RamiroZabala17" target="_blank"></a></div>
+                <div class="col-2 col-sm-2 col-lg-1 col-xl-1 social inst" ><a href="https://twitter.com/RamiroZabala17" target="_blank"></a></div>
+            </div-->
+        </div>
+    </nav>
+</header>
+<app-login *ngIf="!is_login"></app-login>
+<app-logout *ngIf="is_login"></app-logout>

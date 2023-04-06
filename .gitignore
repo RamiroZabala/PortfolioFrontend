@@ -1,0 +1,27 @@
+node_modules
+# Carpetas
+node_modules/
+dist/
+tmp/
+logs/
+coverage/
+
+# Archivos
+*.log
+*.pid
+*.swp
+*.lock
+*.DS_Store
+*.idea
+*.iml
+.idea/
+*.jks
+*.keystore
+*.p12
+*.pfx
+.env
+.env.*
+.e2e.ts
+.e2e.js
+.e2e-spec.ts
+.e2e-spec.js

@@ -1,0 +1,15 @@
+<app-main></app-main>
+<app-about></app-about>
+<app-education-list></app-education-list>
+<section id="HardSkills" class="row">
+    <h3>Hard Skills</h3>
+    <app-skill-list [type]="'HARD'" category="Frontend"></app-skill-list>
+    <app-skill-list [type]="'HARD'" category="Backend"></app-skill-list>
+    <app-skill-list [type]="'HARD'" category="Others"></app-skill-list>
+</section>
+<section id="SoftSkills" class="row">
+    <h3>Soft Skills</h3>
+    <app-skill-list [type]="'SOFT'" category="Soft"></app-skill-list>
+    <app-skill-list [type]="'SOFT'" category="Language"></app-skill-list>
+</section>
+<app-work-project-list></app-work-project-list>

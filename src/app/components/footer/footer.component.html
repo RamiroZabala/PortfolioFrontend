@@ -1,0 +1,48 @@
+<!-- FOOTER -->
+<footer class="w-100 py-4 flex-shrink-0">
+    <div class="row gy-4 gx-5">
+        <div class="footercol1 col-lg-4 col-md-6">
+            <h5 class="h1 text-white">RSZ.</h5>
+            <p class="small text-muted">{{data.title}}</p>
+            <p class="small text-muted mb-0">&copy; Copyrights. All rights reserved. <!--a class="text-primary" href="#">Bootstrapious.com</a--></p>
+        </div>
+        <div class="footercol2 col-lg-2 col-md-6">
+            <h5 class="text-white mb-3">Quick links</h5>
+            <ul class="list-unstyled text-muted">
+                <li><a href="#About">Sobre Mi</a></li>
+                <li><a href="#Education">Educación</a></li>
+                <li><a href="#HardSkills">Habilidades</a></li>
+                <li><a href="#WorkProject">Trabajos</a></li>
+                <li><a [routerLink]="['/contact']">Contacto</a></li>
+            </ul>
+        </div>
+        <div class="footercol3 col-lg-3 col-md-6">
+            <h5 class="text-white mb-3">Contacto</h5>
+            <ul class="list-unstyled text-muted">
+                <li><div><div class="fa-solid fa-phone"></div>{{data.phone}}</div></li>
+                <li><div><div class="fa-solid fa-envelope"></div>{{data.email}}</div></li>
+            </ul>
+        </div>
+        <div class="footercol4 col-lg-3 col-md-6">
+            <h5 class="text-white mb-3">Mis redes sociales</h5>
+            <div class="btn btn-floating  social">
+                <a class="fa-brands fa-facebook-f" target="_blank" [href]="'https://www.facebook.com/profile.php?id='+data.facebook_id"></a>
+            </div>
+            <div class="btn btn-floating social">
+                <a class="fa-brands fa-twitter" target="_blank" [href]="'https://twitter.com/'+data.twitter_id"></a>
+            </div>
+            <!--div class="btn btn-floating social">
+                <a class="fa-brands fa-instagram" target="_blank" [href]="'https://instagram.com/'+data.instagram_id"></a>
+            </div-->
+            <div class="btn btn-floating social">
+                <a class="fa-brands fa-google" target="_blank" [href]="'https://google.com/'+data.instagram_id"></a>
+            </div>
+            <!--div class="btn btn-floating social">
+                <a class="fa-brands fa-linkedin-in" target="_blank" [href]="'https://linkedin.com/'+data.instagram_id"></a>
+            </div-->
+            <div class="btn btn-floating social">
+                <a class="fa-brands fa-github" target="_blank" [href]="'https://github.com/'+data.instagram_id"></a>
+            </div>
+        </div>
+    </div>
+</footer>
