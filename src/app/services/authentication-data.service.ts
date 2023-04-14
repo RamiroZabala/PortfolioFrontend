@@ -35,7 +35,7 @@ export class AuthenticationDataService {
         return response;
       }),
       catchError(error => {
-        console.log('Error:', error);
+        console.log('Error: (authentication-data.service.ts):', error);
         return error;
       })
     );

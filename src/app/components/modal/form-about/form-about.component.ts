@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'; 
+import { Router } from '@angular/router';
 import { Person } from 'src/app/models/models';
 import { PersonDataService } from 'src/app/services/person-data.service';
 
@@ -34,7 +35,8 @@ export class FormAboutComponent implements OnInit {
 
   constructor(
   private formBuilder:FormBuilder,
-  private dataService:PersonDataService){
+  private dataService:PersonDataService,
+  private ruta:Router){
 
   }
 
@@ -121,6 +123,7 @@ export class FormAboutComponent implements OnInit {
     this.dataService.addPerson(body).subscribe((data:any)=>{
       console.log("DATA:" + JSON.stringify(data));
       this.reloadHTML();
+      this.ruta.navigate(['/']);
     })
   }
 }

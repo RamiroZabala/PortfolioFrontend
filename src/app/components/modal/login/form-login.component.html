@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <!-- Submit -->
-                <button [disabled]="!FormValid" type="submit" class="button button-full btnsing" data-bs-dismiss="modal">Login</button>
+                <button [disabled]="!FormValid&&!submitDisable" #submitButtonLogin type="submit" class="button button-full btnsing" >Login</button>
             </form>
         </div>
       </div>

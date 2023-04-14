@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'; 
 import { Router } from '@angular/router';
 import { Credentials } from 'src/app/models/auth-model';
 import { AuthenticationDataService } from 'src/app/services/authentication-data.service';
+
 
 @Component({
   selector: 'app-login',
@@ -10,12 +11,18 @@ import { AuthenticationDataService } from 'src/app/services/authentication-data.
 })
 export class LoginComponent{
 
+  @ViewChild('submitButtonLogin') submitButton: ElementRef<HTMLButtonElement> | undefined;
+
+
   Form:FormGroup;
+  submitDisable:Boolean = false;
 
   constructor(
   private formBuilder:FormBuilder,
   private dataService:AuthenticationDataService,
   private ruta:Router){
+ 
+
     this.Form=this.formBuilder.group(
       {
         email:["",[Validators.required,Validators.email]],
@@ -41,6 +48,11 @@ export class LoginComponent{
 
   login(event:Event){
     event.preventDefault();
+
+    if (this.submitButton) {
+      this.submitDisable = true;
+      this.submitButton.nativeElement.innerHTML = '<div class="spinner-border text-light" role="status"><span class="visually-hidden">Loading...</span></div>';
+    }
 
     const creds:Credentials = {
       email: this.Form.get('email')?.value,
