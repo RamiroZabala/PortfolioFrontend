@@ -5,6 +5,8 @@ dist/
 tmp/
 logs/
 coverage/
+firebase/
+angular
 
 # Archivos
 *.log
