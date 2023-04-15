@@ -12,9 +12,6 @@ export class SkillItemComponent {
   @Input() skillname: string = "Title here";
   @Input() value: number = 0;
   //
-  @Input() reloadHTML: () => void = () => {this.onReloadHTML();}; // inicialización por defecto
-  @Input() public onReloadHTML: () => void = () => {};
-  //
   @Input() delete: () => void = () => {this.onDelete(this.id);}; // inicialización por defecto
   @Input() public onDelete: (id:number) => void = (item) => {};
   //

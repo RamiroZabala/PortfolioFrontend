@@ -19,8 +19,6 @@ export class FormWorkprojectComponent implements OnInit{
   @Input() defaultPeriod:String = "2023";
   @Input() defaultImgUrl:String = "";
   @Input() defaultUrl:String = "";
-  //
-  @Input() reloadHTML: () => any = () => {}; // inicialización por defecto
 
   Form:FormGroup = new FormGroup({});;
 
@@ -76,7 +74,6 @@ export class FormWorkprojectComponent implements OnInit{
       }
     this.dataService.addWorkProject(body).subscribe((data:any)=>{
       console.log("DATA:" + JSON.stringify(data));
-      this.reloadHTML();
     })
   }
 }

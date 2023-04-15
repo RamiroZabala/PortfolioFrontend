@@ -7,5 +7,4 @@ import { IsLogin } from 'src/app/config/config-data';
   styleUrls: ['./header.component.scss']
 })
 
-export class HeaderComponent {  is_login: boolean = IsLogin.IS_LOGIN;
-}
+export class HeaderComponent {is_login: boolean = IsLogin.IS_LOGIN;}

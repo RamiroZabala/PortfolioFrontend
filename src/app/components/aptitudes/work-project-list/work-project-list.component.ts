@@ -3,6 +3,7 @@ import { DynamicComponentDirective } from 'src/app/directives/dynamic-component.
 import { WorkProjectDataService } from 'src/app/services/workproject-data.service';
 import { WorkProjectItemComponent } from '../work-project-item/work-project-item.component';
 import { IsLogin } from 'src/app/config/config-data';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-work-project-list',
@@ -10,7 +11,6 @@ import { IsLogin } from 'src/app/config/config-data';
 })
 
 export class WorkProjectListComponent implements AfterViewInit {
-  @Input() reloadHTML: () => void = () => {this.getData();}; // inicialización por defecto
 
   is_login: boolean = IsLogin.IS_LOGIN;
 
@@ -19,11 +19,17 @@ export class WorkProjectListComponent implements AfterViewInit {
 
   data: any;
   childComponents: ComponentRef<any>[] = [];
+  
+  subscription: Subscription = new Subscription;
 
   constructor(private dataService:WorkProjectDataService){}
 
   ngAfterViewInit(): void {
     this.getData();
+
+    this.subscription = this.dataService.refresh$.subscribe(()=>{
+      this.getData();
+    })
   }
 
   generateChildComponents():void {
@@ -40,9 +46,6 @@ export class WorkProjectListComponent implements AfterViewInit {
       containerRef.instance.img = child.img;
       containerRef.instance.url = child.url;
       containerRef.instance.is_login = this.is_login;
-
-      this.reloadHTML = this.reloadHTML.bind(this); ///////*
-      containerRef.instance.onReloadHTML = this.reloadHTML;
       this.deleteItem = this.deleteItem.bind(this); ///////*
       containerRef.instance.onDelete = this.deleteItem;
       const i = this.childComponents.findIndex(c => c.instance.id === child.id);
@@ -57,8 +60,6 @@ export class WorkProjectListComponent implements AfterViewInit {
     this.dataService.getWorkProjectData().subscribe({
       next: (resp) => {
         this.data = resp;
-        //console.log("WorkProjectList -> Work Project: "+JSON.stringify(this.data));
-        console.log("WorkProjectList -> OK");
         this.generateChildComponents();
       },
       error: (error) => {
@@ -68,7 +69,6 @@ export class WorkProjectListComponent implements AfterViewInit {
   }
   deleteItem(id:number){
     this.dataService.deleteWorkProject(id).subscribe(resp=>{
-      console.log("deleteWorkProyect(): ERROR -> "+resp);
       // Filtro el array de componentes para encontrar el índice del componente con el id especificado
       const index = this.childComponents.findIndex(c => c.instance.id === id);
       // Si se encontró el componente, lo elimino

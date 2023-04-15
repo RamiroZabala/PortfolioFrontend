@@ -21,8 +21,6 @@ export class FormSkillComponent implements OnInit{
   @Input() entryId:Number = -1;
   @Input() skillname:String = "";
   @Input() value:Number = 100;
-  //
-  @Input() reloadHTML: () => any = () => {}; // inicialización por defecto
 
   Form:FormGroup = new FormGroup({});;
   selectOptions: Array<{ label: string, value: string }> = [];
@@ -84,13 +82,11 @@ export class FormSkillComponent implements OnInit{
     if(this.type==="HARD"){
       this.dataService.addHardSkill(body).subscribe((data:any)=>{
         console.log("DATA:" + JSON.stringify(data));
-        this.reloadHTML();
       })
     }
     else {
       this.dataService.addSoftSkill(body).subscribe((data:any)=>{
         console.log("DATA:" + JSON.stringify(data));
-        this.reloadHTML();
       })
     }
   }

@@ -2,5 +2,5 @@
     <h3>EDUCACION</h3>
     <app-manage-buttons *ngIf="is_login" class="pRelative" style="right:1em;" [button_add]="true" [modal_id_add]="'educationModal'"></app-manage-buttons>
     <div class="col-12 mt-4"  #childContainer><ng-template appDynamicComponent></ng-template></div>
-    <app-form-education  *ngIf="is_login"  [reloadHTML]="reloadHTML"></app-form-education>
+    <app-form-education  *ngIf="is_login" ></app-form-education>
 </section>

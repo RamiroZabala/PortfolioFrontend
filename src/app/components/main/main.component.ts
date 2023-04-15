@@ -33,8 +33,6 @@ export class MainComponent implements OnInit {
     this.dataService.getData().subscribe({
       next: (resp) => {
         this.data = resp[0];
-        //console.log("Main -> Datos Personales: "+JSON.stringify(this.data));
-        console.log("Main -> OK");
       },
       error: (error) => {
         console.error(error);

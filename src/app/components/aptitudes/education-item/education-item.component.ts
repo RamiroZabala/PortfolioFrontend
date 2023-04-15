@@ -12,9 +12,6 @@ export class EducationItemComponent {
   @Input() period: string = "period here";
   @Input() img_icon: string = "";
   //
-  @Input() reloadHTML: () => void = () => {this.onReloadHTML();}; // inicialización por defecto
-  @Input() public onReloadHTML: () => void = () => {};
-  //
   @Input() delete: () => void = () => {this.onDelete(this.id);}; // inicialización por defecto
   @Input() public onDelete: (id:number) => void = (item) => {};
   //

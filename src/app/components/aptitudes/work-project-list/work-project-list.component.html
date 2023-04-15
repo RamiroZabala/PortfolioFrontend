@@ -2,5 +2,5 @@
     <h3>TRABAJOS</h3>
     <app-manage-buttons *ngIf="is_login" style="right:1em;" class="pRelative" [button_add]="true" [modal_id_add]="'workprojectModal'"></app-manage-buttons>
     <div class="mt-4"  #childContainer><ng-template appDynamicComponent></ng-template></div>
-    <app-form-workproject *ngIf="is_login" [reloadHTML]="reloadHTML"></app-form-workproject>
+    <app-form-workproject *ngIf="is_login"></app-form-workproject>
 </section>

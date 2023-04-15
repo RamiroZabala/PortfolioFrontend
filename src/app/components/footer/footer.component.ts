@@ -18,7 +18,6 @@ export class FooterComponent implements OnInit {
     this.dataService.getData().subscribe({
       next: (resp) => {
         this.data = resp[0];
-        console.log("Main -> Datos Personales: "+JSON.stringify(this.data));
       },
       error: (error) => {
         console.error(error);

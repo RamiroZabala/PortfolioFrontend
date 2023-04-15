@@ -4,7 +4,6 @@
     <ul class="mt-2"  #childContainer><ng-template appDynamicComponent></ng-template></ul>
 </div>
 <app-form-skill  *ngIf="is_login" 
-    [reloadHTML]="reloadHTML"
     [modalId]="type+''+category+'skillModal'"
     [modalTitle]="'Añadir Entrada'"
     [type]="type"

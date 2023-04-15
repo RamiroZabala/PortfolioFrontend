@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'; 
-import { Router } from '@angular/router';
 import { Person } from 'src/app/models/models';
 import { PersonDataService } from 'src/app/services/person-data.service';
 
@@ -29,14 +28,12 @@ export class FormAboutComponent implements OnInit {
   @Input() defaultInstagram:string = "";
   @Input() defaultTwitter:string = "";
   //
-  @Input() reloadHTML: () => any = () => {}; // inicialización por defecto
 
   Form:FormGroup = new FormGroup({});
 
   constructor(
   private formBuilder:FormBuilder,
-  private dataService:PersonDataService,
-  private ruta:Router){
+  private dataService:PersonDataService){
 
   }
 
@@ -59,33 +56,15 @@ export class FormAboutComponent implements OnInit {
     )
   }
 
-  get Name(){
-    return this.Form.get("form_name");
-  }
-  get LastName(){
-    return this.Form.get("form_lastname");
-  }
-  get LongDescription(){
-    return this.Form.get("form_description");
-  }
-  get Title(){
-    return this.Form.get("form_title");
-  }
-  get Nationality(){
-    return this.Form.get("form_nationality");
-  }
-  get BirthDate(){
-    return this.Form.get("form_birthdate");
-  }
-  get ProfilePic(){
-    return this.Form.get("form_profilepic");
-  }
-  get Email(){
-    return this.Form.get("form_email");
-  }
-  get Phone(){
-    return this.Form.get("form_phone");
-  }
+  get Name(){return this.Form.get("form_name"); }
+  get LastName(){return this.Form.get("form_lastname");}
+  get LongDescription(){return this.Form.get("form_description");}
+  get Title(){return this.Form.get("form_title");}
+  get Nationality(){return this.Form.get("form_nationality");}
+  get BirthDate(){return this.Form.get("form_birthdate");}
+  get ProfilePic(){return this.Form.get("form_profilepic");}
+  get Email(){return this.Form.get("form_email");}
+  get Phone(){return this.Form.get("form_phone");}
   get FormValid(){
     return (
       !this.Form.get("form_name")?.errors &&
@@ -103,27 +82,25 @@ export class FormAboutComponent implements OnInit {
   onSend(event:Event){
     event.preventDefault();
     const body:Person = {
-        id: 1,
-        name:this.Form.get('form_name')?.value,
-        lastname:this.Form.get('form_lastname')?.value,
-        long_description:this.Form.get('form_description')?.value,
-        short_description:this.defaultShortDescription,
-        title:this.Form.get('form_title')?.value,
-        nationality:this.Form.get('form_nationality')?.value,
-        birthdate:this.Form.get('form_birthdate')?.value,
-        img_profile:this.Form.get('form_profilepic')?.value,
-        img_banner:this.defaultBanner,
-        email:this.Form.get('form_email')?.value,
-        phone:this.Form.get('form_phone')?.value,
-        facebook_id:this.defaultFacebook,
-        instagram_id:this.defaultInstagram,
-        twitter_id:this.defaultTwitter
+      id: 1,
+      name:this.Form.get('form_name')?.value,
+      lastname:this.Form.get('form_lastname')?.value,
+      long_description:this.Form.get('form_description')?.value,
+      short_description:this.defaultShortDescription,
+      title:this.Form.get('form_title')?.value,
+      nationality:this.Form.get('form_nationality')?.value,
+      birthdate:this.Form.get('form_birthdate')?.value,
+      img_profile:this.Form.get('form_profilepic')?.value,
+      img_banner:this.defaultBanner,
+      email:this.Form.get('form_email')?.value,
+      phone:this.Form.get('form_phone')?.value,
+      facebook_id:this.defaultFacebook,
+      instagram_id:this.defaultInstagram,
+      twitter_id:this.defaultTwitter
 
-      }
+    }
     this.dataService.addPerson(body).subscribe((data:any)=>{
       console.log("DATA:" + JSON.stringify(data));
-      this.reloadHTML();
-      this.ruta.navigate(['/']);
     })
   }
 }

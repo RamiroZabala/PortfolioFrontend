@@ -3,13 +3,15 @@ import { DynamicComponentDirective } from 'src/app/directives/dynamic-component.
 import { EducationDataService } from 'src/app/services/education-data.service';
 import { EducationItemComponent } from '../education-item/education-item.component';
 import { IsLogin } from 'src/app/config/config-data';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-education-list',
   templateUrl: './education-list.component.html'
 })
 export class EducationListComponent implements AfterViewInit {
-  @Input() reloadHTML: () => void = () => {this.getData();}; // inicialización por defecto
+  
+  subscription: Subscription = new Subscription;
 
   is_login: boolean = IsLogin.IS_LOGIN;
 
@@ -22,6 +24,10 @@ export class EducationListComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.getData();
+
+    this.subscription = this.dataService.refresh$.subscribe(()=>{
+      this.getData();
+    })
   }
 
   generateChildComponents():void {
@@ -34,8 +40,6 @@ export class EducationListComponent implements AfterViewInit {
       containerRef.instance.period = child.period;
       containerRef.instance.img_icon = child.img_icon;
       containerRef.instance.is_login = this.is_login;
-      this.reloadHTML = this.reloadHTML.bind(this); ///////*
-      containerRef.instance.onReloadHTML = this.reloadHTML;
       this.deleteItem = this.deleteItem.bind(this); ///////*
       containerRef.instance.onDelete = this.deleteItem;
       const i = this.childComponents.findIndex(c => c.instance.id === child.id);
@@ -50,8 +54,6 @@ export class EducationListComponent implements AfterViewInit {
     this.dataService.getEducationData().subscribe({
       next: (resp) => {
         this.data = resp;
-        //console.log("EducationList -> Education: "+JSON.stringify(this.data));
-        console.log("EducationList -> OK");
         this.generateChildComponents();
       },
       error: (error) => {
@@ -61,7 +63,6 @@ export class EducationListComponent implements AfterViewInit {
   }
   deleteItem(id:number){
     this.dataService.deleteEducation(id).subscribe(resp=>{
-      console.log("deleteEducation(): ERROR -> "+resp);
       // Filtro el array de componentes para encontrar el índice del componente con el id especificado
       const index = this.childComponents.findIndex(c => c.instance.id === id);
       // Si se encontró el componente, lo elimino

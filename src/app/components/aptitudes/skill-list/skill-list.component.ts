@@ -3,6 +3,7 @@ import { DynamicComponentDirective } from 'src/app/directives/dynamic-component.
 import { SkillDataService } from 'src/app/services/skill-data.service';
 import { SkillItemComponent } from '../skill-item/skill-item.component';
 import { IsLogin } from 'src/app/config/config-data';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-skill-list',
@@ -12,7 +13,6 @@ export class SkillListComponent implements AfterViewInit{
   @ViewChild(DynamicComponentDirective) dynamic !:DynamicComponentDirective;
   @Input() category:string ="";
   @Input() type:String = "";
-  @Input() reloadHTML: () => void = () => {this.getData()}; // inicialización por defecto
 
   is_login: boolean = IsLogin.IS_LOGIN;
 
@@ -20,10 +20,16 @@ export class SkillListComponent implements AfterViewInit{
   data:any;
   childComponents: ComponentRef<any>[] = [];
 
+  subscription: Subscription = new Subscription;
+  
   constructor(private dataService:SkillDataService){}
 
   ngAfterViewInit(): void {
     this.getData();
+
+    this.subscription = this.dataService.refresh$.subscribe(()=>{
+      this.getData();
+    })
   };
 
   generateChildComponents(data:[]):void {
@@ -36,8 +42,6 @@ export class SkillListComponent implements AfterViewInit{
       containerRef.instance.skillname = child.skillname;
       containerRef.instance.value = child.value;
       containerRef.instance.is_login = this.is_login;
-      this.reloadHTML = this.reloadHTML.bind(this); ///////*
-      containerRef.instance.onReloadHTML = this.reloadHTML;
       this.deleteItem = this.deleteItem.bind(this); ///////*
       containerRef.instance.onDelete = this.deleteItem;
       const i = this.childComponents.findIndex(c => c.instance.id === child.id);
@@ -54,20 +58,17 @@ export class SkillListComponent implements AfterViewInit{
       this.dataService.getHardSkillData().subscribe(data => {
         this.data = data.filter((data: { category: string; }) => data.category === this.category);
         this.generateChildComponents(this.data);
-        console.log("HardSkillList -> OK");
       });
     }else{
       this.dataService.getSoftSkillData().subscribe(data => {
         this.data = data.filter((data: { category: string; }) => data.category === this.category);
         this.generateChildComponents(this.data);
-        console.log("SoftSkillList -> OK");
       });
     }
   }
   deleteItem(id:number){
     if(this.type === "HARD"){
       this.dataService.deleteHardSkill(id).subscribe(resp=>{
-        console.log("deleteHardSkill(): ERROR -> "+resp);
         // Filtro el array de componentes para encontrar el índice del componente con el id especificado
         const index = this.childComponents.findIndex(c => c.instance.id === id);
         // Si se encontró el componente, lo elimino
@@ -79,7 +80,6 @@ export class SkillListComponent implements AfterViewInit{
     }
     else{
       this.dataService.deleteSoftSkill(id).subscribe(resp=>{
-        console.log("deleteSoftSkill(): ERROR -> "+resp);
         // Filtro el array de componentes para encontrar el índice del componente con el id especificado
         const index = this.childComponents.findIndex(c => c.instance.id === id);
         // Si se encontró el componente, lo elimino

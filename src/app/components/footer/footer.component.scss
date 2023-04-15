@@ -1,14 +1,22 @@
+@import "src/colors";
+
 footer{
+    border-top:5px solid rgba($color-special2-dark,0.2);
+    background:rgba(black,0.2);
+    backdrop-filter: blur(10px);
     margin-top:150px;
     >div{
         margin:0px 20px;
 
-        .footercol4 a{
-            height:48px;
-            width:48px;
-            font-size: 20px;
-    
+        .btn{
+            padding: 6px;
+            position:relative;
+            left:-12px;
+            a{
+                height:36px;
+                width:36px;
+                font-size: 20px;
+            }
         }
     }
-
 }

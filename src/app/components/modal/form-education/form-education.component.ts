@@ -18,8 +18,6 @@ export class FormEducationComponent implements OnInit{
   @Input() defaultDescription:String = "";
   @Input() defaultPeriod:String = "2023";
   @Input() defaultImgUrl:String = "";
-  //
-  @Input() reloadHTML: () => any = () => {}; // inicialización por defecto
 
   Form:FormGroup = new FormGroup({});
 
@@ -70,7 +68,6 @@ export class FormEducationComponent implements OnInit{
       }
     this.dataService.addEducation(body).subscribe((data:any)=>{
       console.log("DATA:" + JSON.stringify(data));
-      this.reloadHTML();
     })
   }
 }

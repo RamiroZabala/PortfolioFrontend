@@ -7,6 +7,8 @@ $imageHeight:calc($imageWidth*9/16);/*16:9*/
 .bg-img{
     height: $imageWidth;
     width: $imageWidth;
+    width:100%;
+    height: auto;
     max-width:100%;
     margin:1.5em 0;
     margin-right:auto;
