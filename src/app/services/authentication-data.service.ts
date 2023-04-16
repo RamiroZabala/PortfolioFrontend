@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { BehaviorSubject, catchError, Observable, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, of, throwError } from 'rxjs';
 import { map } from 'rxjs';
 import { Credentials } from '../models/auth-model';
 import { ApiServerUrl } from '../config/config-data';
@@ -30,6 +30,7 @@ export class AuthenticationDataService {
         }
 
         localStorage.setItem('token', token);
+        sessionStorage.setItem('session', "1");
         location.reload(); // Recargar la página actual
 
         return response;
@@ -56,4 +57,18 @@ export class AuthenticationDataService {
       })
     );
   }
+
+  isSessionValid(): Observable<boolean> {
+    return this.httpC.get<boolean>(ApiServerUrl.API_SERVER_SESSIONSTATUS).pipe(
+      map((response: boolean) => {
+        console.log("##############################################3Sesión: " + response);
+        return response;
+      }),
+      catchError((error: any) => {
+        console.log("######################################Error al verificar el estado de la sesión: ", error);
+        return of(false);
+      })
+    );
+  }
+  
 }

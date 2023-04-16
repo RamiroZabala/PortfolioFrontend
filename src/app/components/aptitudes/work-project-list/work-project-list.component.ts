@@ -2,7 +2,7 @@ import { Component, Input, ViewChild, ComponentRef , ComponentFactoryResolver, A
 import { DynamicComponentDirective } from 'src/app/directives/dynamic-component.directive';
 import { WorkProjectDataService } from 'src/app/services/workproject-data.service';
 import { WorkProjectItemComponent } from '../work-project-item/work-project-item.component';
-import { IsLogin } from 'src/app/config/config-data';
+import { Session } from 'src/app/config/config-data';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -12,8 +12,7 @@ import { Subscription } from 'rxjs';
 
 export class WorkProjectListComponent implements AfterViewInit {
 
-  is_login: boolean = IsLogin.IS_LOGIN;
-
+  is_login: boolean = Session.IS_LOGGED;
 
   @ViewChild(DynamicComponentDirective) dynamic !:DynamicComponentDirective;
 

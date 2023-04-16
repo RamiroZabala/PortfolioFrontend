@@ -1,4 +1,3 @@
-
 export class ClientData {
     //public static readonly WEB_URL: string = "http://localhost:4200";
     public static readonly WEB_URL: string = "https://portfolioweb-argprog.web.app"; //FireBase
@@ -13,9 +12,10 @@ export class ApiServerUrl {
     public static readonly API_SERVER_REGISTER: string = `${this.API_SERVER}auth/register`;
     public static readonly API_SERVER_LOGIN: string = `${this.API_SERVER}auth/authenticate`;
     public static readonly API_SERVER_LOGOUT: string = `${this.API_SERVER}auth/logout`;
+    public static readonly API_SERVER_SESSIONSTATUS: string = `${this.API_SERVER}auth/session_status`;
 
 }
 
-export class IsLogin {
-    public static readonly IS_LOGIN: boolean = (localStorage.getItem('token') != undefined); 
+export class Session {
+    public static readonly IS_LOGGED: boolean = ((localStorage.getItem('token') != undefined) && (sessionStorage.getItem("session") != undefined)); 
 }

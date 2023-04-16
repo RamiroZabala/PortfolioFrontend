@@ -1,12 +1,13 @@
 @import "colors";
+@import "screensizes";
 
 #maincontainer {
     section{
         margin-top: 3rem;
         margin-bottom: 3rem;
         padding:2em;
-        >*{
-            padding: 0 !important;/*Para extraño padding en <app-skill-list>*/
+        @media (max-width: $sm-screen) {
+            padding:1em; 
         }
         .card{
             /*backdrop-filter: blur(1px);*/
@@ -21,6 +22,9 @@
             outline-offset: -3px;
             position:relative;
             overflow:hidden;
+            @media (max-width: $sm-screen) {
+                padding: 1em !important;
+            }
         }
         .card:before{/*Para backdrop-filter ya que al ponerlo en .card produce un error con la ventana modal*/
             content:"";
@@ -104,26 +108,7 @@ header>nav{
 .col2{
     color:$color-special2;
 }
-#main{
-    color:$color-primary;
-    margin-bottom: 300px !important;
-    margin-top:200px!important;
-    .medium{
-        font-size:35px;
-        font-weight: 500;
-        color:$color-primary;
-    }
-    .big{
-        font-size:50px;
-        font-weight: 500;
-        color:$color-primary;
-    }
-    .desc{
-        line-height: 35px;
-        font-size:24px;
-        color:$color-secondary;
-    }
-}
+
 h1,h2,h3,h4{
     color:$color-primary;
     margin-bottom:15px;
@@ -134,9 +119,6 @@ h4{
 h5{
     color:$color-primary;
     text-transform:capitalize;
-}
-.skilllist h4{
-    color:$color-special2;
 }
 h3{
     text-transform: uppercase;
@@ -216,42 +198,7 @@ a[class*="fa-"]:active{
     height:100%;
     width:auto;
 }
-.progress{
-    margin-bottom:1.5em;
-    margin-top:1em;
-    height:2em;
-    overflow: hidden;
-    transform: skew(-20deg);
-    -webkit-transform: skew(-20deg);
-    -moz-transform: skew(-20deg);
-    border-radius: 0.5em;
-    background-color:rgba(0,0,0,0.2);
-    box-shadow: 1px 1px 1px rgba($color-special1-light, 0.8), -1px -1px 1px rgba(rgba(black, 0.2), 0.6);
-    .progress-bar{
-        position:relative;
-        overflow: hidden;
-        background: rgba($color-special1,1);
-        background: -webkit-linear-gradient(90deg,rgba($color-special1-dark,0.8) 0%, rgba($color-special1,0.8) 100%);
-        background: -moz-linear-gradient(90deg,rgba($color-special1-dark,0.8) 0%, rgba($color-special1,0.8) 100%);
-        background: -o-linear-gradient(90deg,rgba($color-special1-dark,0.8) 0%, rgba($color-special1,0.8) 100%);
-        background: linear-gradient(90deg,rgba($color-special1-dark,0.8) 0%, rgba($color-special1,0.8) 100%);
-        border-radius: 0.5em;
-        border-right:2px solid $color-special1-dark;
-        border-bottom:2px solid $color-special1-dark;
 
-    }
-    /*.progress-bar::after{
-        content:"";
-        display:inline-block;
-        width:3px;
-        position:absolute;
-        right:0;
-        bottom:0px;
-        top:0px;
-        background-color: $color-special1-light;
-        border-radius: 0.5em;
-    }*/
-}
 /*GENERAL COLOR OVERRIDES*/
 .social>a{
     background-color:rgba(100,100,100,0.2);
@@ -266,9 +213,12 @@ a:hover{
 .bg-img{
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 90%;
+    background-size: auto 90%;
     width:100%;
     height:100%;
+    @media (max-width: $sm-screen) {
+        background-size: 100% auto;
+    }
 }
 /***************************************************************/
 /* FORMULARIOS *************************************************/

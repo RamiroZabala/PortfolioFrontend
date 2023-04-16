@@ -1,0 +1,39 @@
+@import "src/colors";
+@import "src/screensizes";
+
+#main{
+    color:$color-primary;
+    margin-bottom: 300px !important;
+    margin-top:200px!important;
+    @media (max-width: $sm-screen) {
+        margin-top:100px!important;
+        margin-bottom: 100px !important;
+    }
+    .medium{
+        font-size:35px;
+        font-weight: 500;
+        color:$color-primary;
+    }
+    .big{
+        font-size:50px;
+        font-weight: 500;
+        color:$color-primary;
+    }
+    .desc{
+        line-height: 35px;
+        font-size:24px;
+        color:$color-secondary;
+    }
+}
+
+.argprog_logo{
+    background-image: url("../../../assets/img/logo_argprog.png");
+    background-size:100% auto;
+    display:block;
+    height:100px;
+    width:100px;
+}
+.argprog_logo,
+.YoProgramo{
+    opacity:0.5;
+}

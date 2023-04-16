@@ -12,8 +12,21 @@ export class InterceptorService implements HttpInterceptor{
   constructor(private autenticationService:AuthenticationDataService) { }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     var accessToken = this.autenticationService.getToken();
+    // SESSION STATUS / Para comprobar si el token almacenado en local storage sigue teniendo validez.
+    if(req.url.indexOf('/api/auth/session_status') > -1){
+      req=req.clone({
+        setHeaders:{
+          'Access-Control-Allow-Origin': ClientData.WEB_URL,
+          'Access-Control-Allow-Methods': 'GET',
+          'Access-Control-Allow-Headers': '*',
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer '+accessToken
+        }
+      })
+      console.log("Interceptor: "+req.url);
+    }
     // LOGOUT
-    if(req.url.indexOf('/api/auth/logout') > -1){
+    else if(req.url.indexOf('/api/auth/logout') > -1){
       req=req.clone({
         setHeaders:{
           'Access-Control-Allow-Origin': ClientData.WEB_URL,
@@ -25,8 +38,8 @@ export class InterceptorService implements HttpInterceptor{
       })
       console.log("Interceptor: "+req.url);
     }
-    // AUTHENTICATION
-    else if(req.url.indexOf('/api/auth/') > -1){
+    // AUTHENTICATION / REGISTER
+    else if((req.url.indexOf('/api/auth/authenticate') > -1)||(req.url.indexOf('/api/auth/register') > -1)){
       if (req.method === 'OPTIONS') {
         req=req.clone({
           setHeaders:{

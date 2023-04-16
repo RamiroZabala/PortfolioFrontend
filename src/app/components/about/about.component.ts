@@ -3,7 +3,7 @@ import { DynamicComponentDirective } from 'src/app/directives/dynamic-component.
 import { Person } from 'src/app/models/models';
 import { PersonDataService } from 'src/app/services/person-data.service';
 import { FormAboutComponent } from 'src/app/components/modal/form-about/form-about.component';
-import { IsLogin } from 'src/app/config/config-data';
+import { Session } from 'src/app/config/config-data';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -14,8 +14,7 @@ export class AboutComponent implements AfterViewInit {
   
   subscription: Subscription = new Subscription;
 
-  is_login: boolean = IsLogin.IS_LOGIN;
-
+  is_login: boolean = Session.IS_LOGGED;
 
   @ViewChild(DynamicComponentDirective) dynamic !:DynamicComponentDirective;
 

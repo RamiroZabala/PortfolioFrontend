@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IsLogin } from 'src/app/config/config-data';
+import { Session } from 'src/app/config/config-data';
 
 @Component({
   selector: 'app-header',
@@ -7,4 +7,6 @@ import { IsLogin } from 'src/app/config/config-data';
   styleUrls: ['./header.component.scss']
 })
 
-export class HeaderComponent {is_login: boolean = IsLogin.IS_LOGIN;}
+export class HeaderComponent {
+  is_login: boolean = Session.IS_LOGGED;
+}

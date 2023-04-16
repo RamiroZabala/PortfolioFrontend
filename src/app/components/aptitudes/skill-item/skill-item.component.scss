@@ -1,0 +1,37 @@
+@import "src/colors";
+
+.progress{
+    margin-bottom:1.5em;
+    margin-top:1em;
+    height:2em;
+    overflow: hidden;
+    transform: skew(-20deg);
+    -webkit-transform: skew(-20deg);
+    -moz-transform: skew(-20deg);
+    border-radius: 0.5em;
+    background-color:rgba(0,0,0,0.2);
+    box-shadow: 1px 1px 1px rgba($color-special1-light, 0.8), -1px -1px 1px rgba(rgba(black, 0.2), 0.6);
+    .progress-bar{
+        position:relative;
+        overflow: hidden;
+        background: rgba($color-special1,1);
+        background: -webkit-linear-gradient(90deg,rgba($color-special1-dark,0.8) 0%, rgba($color-special1,0.8) 100%);
+        background: -moz-linear-gradient(90deg,rgba($color-special1-dark,0.8) 0%, rgba($color-special1,0.8) 100%);
+        background: -o-linear-gradient(90deg,rgba($color-special1-dark,0.8) 0%, rgba($color-special1,0.8) 100%);
+        background: linear-gradient(90deg,rgba($color-special1-dark,0.8) 0%, rgba($color-special1,0.8) 100%);
+        border-radius: 0.5em;
+        border-right:2px solid $color-special1-dark;
+        border-bottom:2px solid $color-special1-dark;
+    }
+    /*.progress-bar::after{
+        content:"";
+        display:inline-block;
+        width:3px;
+        position:absolute;
+        right:0;
+        bottom:0px;
+        top:0px;
+        background-color: $color-special1-light;
+        border-radius: 0.5em;
+    }*/
+}

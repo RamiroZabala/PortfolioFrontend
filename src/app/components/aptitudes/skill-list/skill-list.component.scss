@@ -1,0 +1,10 @@
+@import "src/colors";
+
+.skilllist{
+    ul{
+        padding: 0 !important;/*Para inexplicable padding*/
+    }
+    h4{
+        color:$color-special2;
+    }
+}

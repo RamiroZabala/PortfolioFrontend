@@ -2,7 +2,7 @@ import { Component, Input, ViewChild, ComponentRef , ComponentFactoryResolver, A
 import { DynamicComponentDirective } from 'src/app/directives/dynamic-component.directive';
 import { EducationDataService } from 'src/app/services/education-data.service';
 import { EducationItemComponent } from '../education-item/education-item.component';
-import { IsLogin } from 'src/app/config/config-data';
+import { Session } from 'src/app/config/config-data';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -13,7 +13,7 @@ export class EducationListComponent implements AfterViewInit {
   
   subscription: Subscription = new Subscription;
 
-  is_login: boolean = IsLogin.IS_LOGIN;
+  is_login: boolean = Session.IS_LOGGED;
 
   @ViewChild(DynamicComponentDirective) dynamic !:DynamicComponentDirective;
 

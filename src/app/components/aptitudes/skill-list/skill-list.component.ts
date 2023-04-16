@@ -2,19 +2,20 @@ import { Component, ViewChild, ComponentRef , ComponentFactoryResolver, AfterVie
 import { DynamicComponentDirective } from 'src/app/directives/dynamic-component.directive';
 import { SkillDataService } from 'src/app/services/skill-data.service';
 import { SkillItemComponent } from '../skill-item/skill-item.component';
-import { IsLogin } from 'src/app/config/config-data';
+import { Session } from 'src/app/config/config-data';
 import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-skill-list',
-  templateUrl: './skill-list.component.html'
+  templateUrl: './skill-list.component.html',
+  styleUrls: ['./skill-list.component.scss']
 })
 export class SkillListComponent implements AfterViewInit{
   @ViewChild(DynamicComponentDirective) dynamic !:DynamicComponentDirective;
   @Input() category:string ="";
   @Input() type:String = "";
 
-  is_login: boolean = IsLogin.IS_LOGIN;
+  is_login: boolean = Session.IS_LOGGED;
 
   //
   data:any;
