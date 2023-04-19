@@ -42,7 +42,8 @@
                     </div>
                 </div>
                 <!-- Submit -->
-                <button [disabled]="!FormValid&&!submitDisable" #submitButtonLogin type="submit" class="button button-full btnsing" >Login</button>
+                <p *ngIf="credencialesIncorrectas" class="text-danger">{{errorMessage}}</p>
+                <button [disabled]="!FormValid" #submitButtonLogin type="submit" class="button button-full btnsing" >{{SubmitButtonText}}</button>
             </form>
         </div>
       </div>

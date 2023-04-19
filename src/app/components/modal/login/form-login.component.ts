@@ -13,9 +13,11 @@ export class LoginComponent{
 
   @ViewChild('submitButtonLogin') submitButton: ElementRef<HTMLButtonElement> | undefined;
 
-
+  SubmitButtonText = "Iniciar Sesión";
   Form:FormGroup;
   submitDisable:Boolean = false;
+  errorMessage: string = 'Credenciales Incorrectas. Intente nuevamente';
+  credencialesIncorrectas:Boolean = false;
 
   constructor(
   private formBuilder:FormBuilder,
@@ -43,7 +45,7 @@ export class LoginComponent{
     return this.Form.get("password");
   }
   get FormValid(){
-    return (!this.Form.get("email")?.errors && !this.Form.get("password")?.errors);
+    return (!this.Form.get("email")?.errors && !this.Form.get("password")?.errors) && !this.submitDisable;
   }
 
   login(event:Event){
@@ -62,6 +64,17 @@ export class LoginComponent{
     this.dataService.logIn(creds).subscribe((data:any)=>{
       console.log("DATA:" + JSON.stringify(data));
       this.ruta.navigate(['/']);
+    },
+    (error:any) => {
+      console.log("Error al autenticar:", error);
+      //this.errorMessage = error.error.message;
+      this.submitDisable = false; // habilitar el botón de enviar
+      this.credencialesIncorrectas = true;
+      if (this.submitButton) {
+        this.submitButton.nativeElement.innerHTML = this.SubmitButtonText; // actualizar el texto del botón
+      }
+      
     })
+
   }
 }

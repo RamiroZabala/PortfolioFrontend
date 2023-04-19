@@ -36,7 +36,7 @@ export class AuthenticationDataService {
         return response;
       }),
       catchError(error => {
-        console.log('Error: (authentication-data.service.ts):', error);
+        console.log('Error:', error);
         return error;
       })
     );
@@ -61,11 +61,11 @@ export class AuthenticationDataService {
   isSessionValid(): Observable<boolean> {
     return this.httpC.get<boolean>(ApiServerUrl.API_SERVER_SESSIONSTATUS).pipe(
       map((response: boolean) => {
-        console.log("##############################################3Sesión: " + response);
+        console.log("Sesión recuperada: " + response);
         return response;
       }),
       catchError((error: any) => {
-        console.log("######################################Error al verificar el estado de la sesión: ", error);
+        //console.log("Error al verificar el estado de la sesión: ", error);
         return of(false);
       })
     );
