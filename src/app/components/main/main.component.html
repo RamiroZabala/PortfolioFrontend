@@ -1,6 +1,6 @@
-<section class="row" id="main">
+<section class="row" id="main" [ngStyle]="{ 'min-height': getHeight() + 'px'}">
     <div class="col-sm-12 col-lg-7">
-            <p class="medium">Hola, soy <span class="col2">{{data.name}} {{data.lastname}}</span></p>
+            <p class="medium">Soy <span class="colortext">{{data.name}} {{data.lastname}}</span></p>
             <p class="big">{{data.title}}</p>
             <p class="desc">Echa un vistazo...</p>
      </div>

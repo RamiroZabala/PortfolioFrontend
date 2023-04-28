@@ -3,17 +3,17 @@
 .manage-buttons{
     position:absolute;
     right:0;top:0;
+    z-index: 2;
     button{
         border: none !important;
-        color:$color-special2;
+        color:$color_special1;
         font-size:16px;
         transition: transform 0.2s;
         :hover{
-            color:$color-primary;
+            color:$color_primary;
         }
         :active{
             transform: scale(0.92);
         }
     }
-
 }

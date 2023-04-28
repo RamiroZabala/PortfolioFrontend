@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
 import { Person } from 'src/app/models/models';
 import { PersonDataService } from 'src/app/services/person-data.service';
 
@@ -28,8 +28,18 @@ export class MainComponent implements OnInit {
     instagram_id: '',
     twitter_id: ''
   };
+  constructor(private dataService:PersonDataService, private elRef: ElementRef){}
+  
+  getHeight(): number {
+    return window.innerHeight - this.elRef.nativeElement.querySelector('#main').offsetTop;
+  }
+  
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    // Actualizar la altura del elemento si cambia la altura de la ventana
+    // Puedes llamar a getHeight() aquí y asignar su valor a una propiedad del componente
+  }
 
-  constructor(private dataService:PersonDataService){}
 
   ngOnInit(): void {
     this.dataService.getData().subscribe({

@@ -1,7 +1,36 @@
-.argprog_logo{
-    background-image: url("../../../assets/img/logo_argprog.png");
-    background-size:100% auto;
-    display:block;
-    height:60px;
-    width:60px;
+@import "src/colors";
+@import "src/screensizes";
+
+header>nav{
+    margin:10px 20px;
+    .navbar-brand{
+        -webkit-transition: transform 0.2s;
+        -moz-transition: transform 0.2s;
+        transition: transform 0.2s;
+        span{
+            color:$color_special1;
+        }
+    }
+    .navbar-brand:hover{
+        transform: scale(1.2) ;
+        -webkit-transform: scale(1.2) ;
+        -moz-transform: scale(1.2) ;
+        text-shadow: 0 0 15px $color_special1_lighter;
+    }
+    .navbar-brand,
+    .navbar-brand *{
+        font-family: 'Roboto', monospace;
+        letter-spacing: 5px;
+        font-weight: 800;
+        font-size:35px;
+
+    }
+    #navbarSupportedContent>*{
+        margin-right: 20px !important;
+        margin-left:auto!important;
+    }
+    .nav-link:hover{
+        /*text-shadow: 0 0 10px $color_special1_lighter;*/
+        color:$color_special1_lighter;
+    }
 }

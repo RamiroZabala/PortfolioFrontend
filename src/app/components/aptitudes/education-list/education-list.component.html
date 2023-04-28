@@ -1,6 +1,10 @@
-<section id="Education" class="row" ><!--EDUCACION-->
-    <h3>EDUCACION</h3>
-    <app-manage-buttons *ngIf="is_login" class="pRelative" style="right:1em;" [button_add]="true" [modal_id_add]="'educationModal'"></app-manage-buttons>
-    <div class="col-12 mt-4"  #childContainer><ng-template appDynamicComponent></ng-template></div>
-    <app-form-education  *ngIf="is_login" ></app-form-education>
+<section id="Education" class="row card-container" ><!--EDUCACION-->
+    <div class="card bg-transparent">
+        <div class="card-body">
+            <app-manage-buttons *ngIf="is_login" class="pRelative addBtn" [button_add]="true" [modal_id_add]="'educationModal'"></app-manage-buttons>
+            <h2 class="card-title">Educación</h2>
+            <div class="mt-4 edu_list"  #childContainer><ng-template appDynamicComponent></ng-template></div>
+        </div>
+        <app-form-education  *ngIf="is_login" ></app-form-education>
+    </div>
 </section>

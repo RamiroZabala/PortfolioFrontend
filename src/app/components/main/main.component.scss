@@ -2,27 +2,27 @@
 @import "src/screensizes";
 
 #main{
-    color:$color-primary;
-    margin-bottom: 300px !important;
-    margin-top:200px!important;
-    @media (max-width: $sm-screen) {
-        margin-top:100px!important;
-        margin-bottom: 100px !important;
+    color:$color_primary;
+    padding-top:200px;
+    /*Ajusto la altura y padding desde main-component */
+    @media (max-width: $ms-screen) {
+        padding-top:50px;
     }
     .medium{
         font-size:35px;
         font-weight: 500;
-        color:$color-primary;
+        color:$color_primary;
     }
     .big{
+        font-family: 'Tilt Warp', sans-serif;
+        text-transform: uppercase;
         font-size:50px;
         font-weight: 500;
-        color:$color-primary;
     }
     .desc{
         line-height: 35px;
         font-size:24px;
-        color:$color-secondary;
+        color:$color_secondary;
     }
 }
 

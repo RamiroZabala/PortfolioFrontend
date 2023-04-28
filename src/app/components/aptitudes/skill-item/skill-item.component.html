@@ -1,5 +1,5 @@
-<li class="listitem pRelative mt-2">
-    <h5>{{skillname}}</h5>
+<div class="listitem pRelative mt-2">
+    <h5>{{skillname}}<div *ngIf="!is_login" class="skillvalue">{{value}}%</div></h5>
     <div class="progress">
         <div class="progress-bar" role="progressbar" [attr.aria-label]="skillname" [style]="'width: '+value+'%'" [attr.aria-valuenow]="value" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
@@ -21,4 +21,4 @@
         [skillname]="skillname"
         [value]="value">
     </app-form-skill>
-</li>
+</div>

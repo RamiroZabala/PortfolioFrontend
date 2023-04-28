@@ -1,11 +1,15 @@
-<div class="skilllist card bg-transparent mb-4" >
-    <app-manage-buttons  *ngIf="is_login"  class="pRelative" [button_add]="true" [modal_id_add]="type+''+category+'skillModal'"></app-manage-buttons>
-    <h4>{{category}}</h4>
-    <ul class="mt-2" #childContainer><ng-template appDynamicComponent></ng-template></ul>
+<div [id]="category+'_skill'" class="row card-container">
+    <div class="skilllist card bg-transparent">
+        <div class="card-body">
+            <app-manage-buttons *ngIf="is_login" class="pRelative addBtn" [button_add]="true" [modal_id_add]="type+''+category+'skillModal'"></app-manage-buttons>
+            <h2 class="card-title">{{category}} Skills</h2>
+            <div class="mt-2" #childContainer><ng-template appDynamicComponent></ng-template></div>
+        </div>
+    </div>
+    <app-form-skill  *ngIf="is_login" 
+        [modalId]="type+''+category+'skillModal'"
+        [modalTitle]="'Añadir Entrada'"
+        [type]="type"
+        [category]="category">
+    </app-form-skill>
 </div>
-<app-form-skill  *ngIf="is_login" 
-    [modalId]="type+''+category+'skillModal'"
-    [modalTitle]="'Añadir Entrada'"
-    [type]="type"
-    [category]="category">
-</app-form-skill>

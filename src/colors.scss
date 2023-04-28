@@ -1,22 +1,34 @@
-$color-primary:#DDD;
-$color-primary-light:lighten($color-primary, 100%);
-$color-primary-dark:darken($color-primary, 50%);
-$color-secondary:#999;
+$color_primary:#DDD;
+$color_primary_light:lighten($color_primary, 100%);
+$color_primary_dark:darken($color_primary, 50%);
+$color_secondary:#999;
 
-$color-special1:#5918DF;
-$color-special1-light:lighten($color-special1, 5%);
-$color-special1-dark:darken($color-special1, 20%);
 
-$color-special2:#15B991;
-$color-special2-light:lighten($color-special2, 3%);
-$color-special2-dark:darken($color-special2, 10%);
 
-$color-cancel:#b93b15;
-$color-cancel-light:lighten($color-cancel, 8%);
-$color-cancel-dark:darken($color-cancel, 10%);
+$color_special1:#15B991;
+$color_special1_lighter:lighten($color_special1, 5%);
+$color_special1_darker:darken($color_special1, 10%);
 
-$color-disabled:#3f3f3f;
-$color-disabled-light:lighten($color-disabled, 8%);
-$color-disabled-dark:darken($color-disabled, 10%);
+$color_special1_shift: adjust-hue($color_special1, 50deg);
+$color_special1_shift_lighter: lighten($color_special1_shift, 10%);
+$color_special1_shift_darker: darken($color_special1_shift, 10%);
 
-$color-bg:#100E17;
+$color_special3:#5918DF;
+$color_special3_light:lighten($color_special3, 5%);
+$color_special3_dark:darken($color_special3, 20%);
+
+$color_cancel:#b93b15;
+$color_cancel_lighter:lighten($color_cancel, 8%);
+$color_cancel_darker:darken($color_cancel, 10%);
+
+$color_disabled:#3f3f3f;
+$color_disabled_light:lighten($color_disabled, 8%);
+$color_disabled_dark:darken($color_disabled, 10%);
+
+//$color_bg:rgb(31, 34, 51);
+$color_bg:#181818;
+$color_bg2: mix($color_special3, $color_bg, 2%);
+
+$color_bg_darken:darken($color_bg2, 10%);
+$color_bg_lighten:lighten($color_bg2, 3%);
+

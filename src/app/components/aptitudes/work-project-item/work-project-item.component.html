@@ -1,4 +1,4 @@
-<li class="row pRelative">
+<li class="row pRelative card-container">
     <div *ngIf="!is_even" class="col-sm-0 col-1"></div>
     <div class="card bg-transparent mb-4 col-lg-11 col-sm-12">
         <app-manage-buttons *ngIf="is_login" class="pRelative"
@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="card-body">
-                    <h4 class="card-title" >{{title}}</h4>
+                    <h2 class="card-title" >{{title}}</h2>
                     <p class="card-text">{{description}}</p>
                     <p class="card-text"><small class="text-muted">{{period}}</small></p>
                 </div>

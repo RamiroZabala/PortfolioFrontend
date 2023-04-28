@@ -1,6 +1,6 @@
 <section id="WorkProject" class="row" ><!--EDUCACION-->
-    <h3>TRABAJOS</h3>
-    <app-manage-buttons *ngIf="is_login" style="right:1em;" class="pRelative" [button_add]="true" [modal_id_add]="'workprojectModal'"></app-manage-buttons>
+    <h1 class="big">Portfolio</h1>
+    <app-manage-buttons *ngIf="is_login" style="right:1em;" class="pRelative addBtn" [button_add]="true" [modal_id_add]="'workprojectModal'"></app-manage-buttons>
     <div class="mt-4"  #childContainer><ng-template appDynamicComponent></ng-template></div>
     <app-form-workproject *ngIf="is_login"></app-form-workproject>
 </section>

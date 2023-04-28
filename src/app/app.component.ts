@@ -3,12 +3,11 @@ import { AuthenticationDataService } from './services/authentication-data.servic
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
 
-  title:string = 'portfolio';
+  title:string = 'RSZ Portfolio';
   IsLogin:string = "";
 
   constructor(private dataService:AuthenticationDataService){}
